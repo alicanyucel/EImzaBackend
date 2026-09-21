@@ -15,6 +15,7 @@ namespace EImza.WebAPI.Middlewares
                 {
                     AppUser user = new()
                     {
+
                         UserName = "admin",
                         Email = "admin@admin.com",
                         FirstName = "Ali Can",

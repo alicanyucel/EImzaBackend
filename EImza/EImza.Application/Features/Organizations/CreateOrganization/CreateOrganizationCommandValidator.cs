@@ -1,0 +1,17 @@
+using FluentValidation;
+
+namespace EImza.Application.Features.Organizations.CreateOrganization
+{
+    public sealed class CreateOrganizationCommandValidator : AbstractValidator<CreateOrganizationCommand>
+    {
+        public CreateOrganizationCommandValidator()
+        {
+            RuleFor(p => p.Name)
+                .NotEmpty().WithMessage("Organizasyon adı boş olamaz")
+                .MaximumLength(200).WithMessage("Organizasyon adı en fazla 200 karakter olabilir");
+            RuleFor(p => p.ContactEmail)
+                .EmailAddress().WithMessage("Geçerli bir email adresi giriniz")
+                .When(p => !string.IsNullOrEmpty(p.ContactEmail));
+        }
+    }
+}
