@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="EImza/EImza.Application/EImza.Application.csproj" />
+  <Project Path="EImza/EImza.Domain/EImza.Domain.csproj" />
+  <Project Path="EImza/EImza.Infrastructure/EImza.Infrastructure.csproj" />
+  <Project Path="EImza/EImza.WebAPI/EImza.WebAPI.csproj" />
+</Solution>
