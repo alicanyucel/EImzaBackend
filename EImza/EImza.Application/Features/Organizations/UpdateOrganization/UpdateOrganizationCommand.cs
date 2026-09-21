@@ -9,5 +9,5 @@ namespace EImza.Application.Features.Organizations.UpdateOrganization
         string? TaxId,
         string? Address,
         string? ContactEmail,
-        bool IsActive) : IRequest<Result>;
+        bool IsActive) : IRequest<Result<bool>>;
 }

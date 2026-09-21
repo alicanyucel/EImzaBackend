@@ -7,15 +7,15 @@ namespace EImza.Application.Features.Organizations.UpdateOrganization
 {
     internal sealed class UpdateOrganizationCommandHandler(
         IOrganizationRepository organizationRepository,
-        IUnitOfWork unitOfWork) : IRequestHandler<UpdateOrganizationCommand, Result>
+        IUnitOfWork unitOfWork) : IRequestHandler<UpdateOrganizationCommand, Result<bool>>
     {
-        public async Task<Result> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
+        public async Task<Result<bool>> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
         {
             var organization = await organizationRepository.GetByExpressionAsync(p => p.Id == request.Id, cancellationToken);
 
             if (organization is null)
             {
-                return Result.Failure("Organizasyon bulunamadı");
+                return (500, "Organizasyon bulunamadı");
             }
 
             organization.Name = request.Name;
@@ -27,7 +27,7 @@ namespace EImza.Application.Features.Organizations.UpdateOrganization
             organizationRepository.Update(organization);
             await unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return Result.Succeed();
+            return true;
         }
     }
 }

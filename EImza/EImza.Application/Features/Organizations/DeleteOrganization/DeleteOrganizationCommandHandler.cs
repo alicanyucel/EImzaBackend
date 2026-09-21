@@ -7,21 +7,21 @@ namespace EImza.Application.Features.Organizations.DeleteOrganization
 {
     internal sealed class DeleteOrganizationCommandHandler(
         IOrganizationRepository organizationRepository,
-        IUnitOfWork unitOfWork) : IRequestHandler<DeleteOrganizationCommand, Result>
+        IUnitOfWork unitOfWork) : IRequestHandler<DeleteOrganizationCommand, Result<bool>>
     {
-        public async Task<Result> Handle(DeleteOrganizationCommand request, CancellationToken cancellationToken)
+        public async Task<Result<bool>> Handle(DeleteOrganizationCommand request, CancellationToken cancellationToken)
         {
             var organization = await organizationRepository.GetByExpressionAsync(p => p.Id == request.Id, cancellationToken);
 
             if (organization is null)
             {
-                return Result.Failure("Organizasyon bulunamadı");
+                return (500, "Organizasyon bulunamadı");
             }
 
             organizationRepository.Delete(organization);
             await unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return Result.Succeed();
+            return true;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace EImza.Application.Features.Organizations.GetByIdOrganization
 
             if (organization is null)
             {
-                return Result.Failure("Organizasyon bulunamadı");
+                return (500, "Organizasyon bulunamadı");
             }
 
             return organization;
