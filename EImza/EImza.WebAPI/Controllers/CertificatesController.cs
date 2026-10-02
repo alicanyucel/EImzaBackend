@@ -5,12 +5,17 @@ using EImza.Application.Features.Certificates.GetByIdCertificate;
 using EImza.Application.Features.Certificates.UpdateCertificate;
 using EImza.WebAPI.Abstractions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EImza.WebAPI.Controllers
 {
+    [AllowAnonymous]
+    
     public sealed class CertificatesController : ApiController
     {
+
+       
         public CertificatesController(IMediator mediator) : base(mediator)
         {
         }

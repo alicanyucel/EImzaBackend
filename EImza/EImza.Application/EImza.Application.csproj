@@ -22,4 +22,11 @@
     <ProjectReference Include="..\EImza.Domain\EImza.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Signature\DeleteSignature\" />
+    <Folder Include="Features\Signature\GetAllSignature\" />
+    <Folder Include="Features\Signature\GetByIdSignature\" />
+    <Folder Include="Features\Signature\UpdateSignature\" />
+  </ItemGroup>
+
 </Project>

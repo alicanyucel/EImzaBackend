@@ -5,10 +5,12 @@ using EImza.Application.Features.Documents.GetByIdDocument;
 using EImza.Application.Features.Documents.UpdateDocument;
 using EImza.WebAPI.Abstractions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EImza.WebAPI.Controllers
 {
+    [AllowAnonymous]
     public sealed class DocumentsController : ApiController
     {
         public DocumentsController(IMediator mediator) : base(mediator)
